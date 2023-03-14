@@ -19,8 +19,5 @@ function test(){
     var useremail = localStorage.setItem("uemail", uemail_serialized);
     var userpwd = localStorage.setItem("upwd", upwd_serialized);
     var usertime = localStorage.setItem("utime", utime_serialized);
-
-
-     
    
 }
