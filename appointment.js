@@ -1,21 +1,36 @@
+var itemList = document.getElementById('list')
+// itemList.addEventListener('click', removeItem);
 function saveToLocalStorage(event){
-            event.preventDefault();
-            const name = event.target.name.value;
-            const email = event.target.email.value;
-            const phone = event.target.phone.value;
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const phone = event.target.phone.value;
+    const obj = {
+        name,
+        email,
+        phone
+    }
+    localStorage.setItem(obj.email, JSON.stringify(obj))
+    const parentElem = document.getElementById('list');
+    const childElem = document.createElement('li')
+    childElem.textContent = obj.name + ' - ' + obj.email + ' - ' + obj.phone
+    /*var deleteBtn = document.createElement('button');
+    deleteBtn.className = 'btn btn-danger btn-sm delete';
+    deleteBtn.appendChild(document.createTextNode('Delete'));
+    childElem.appendChild(deleteBtn);
+    parentElem.appendChild(childElem);*/
+    var deleteBtn = document.createElement('input');
+    deleteBtn.type = 'button';
+    deleteBtn.value = 'delete';
+    deleteBtn.onclick = () =>{
+        localStorage.removeItem(obj.email);
+        parentElem.removeChild(childElem)
+    }
+    childElem.appendChild(deleteBtn);
+    parentElem.appendChild(childElem);
+    
+}
 
-            const obj = {
-                name,
-                email,
-                phone
-            }
-            localStorage.setItem(obj.email, JSON.stringify(obj))
-            const parentElem = document.getElementById('list');
-            const childElem = document.createElement('li')
-            childElem.textContent = obj.name + ' - ' + obj.email + ' - ' + obj.phone
-            parentElem.appendChild(childElem);
-            //showUserOnScreen()
-        }
 
 
 
