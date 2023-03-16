@@ -28,7 +28,15 @@ function saveToLocalStorage(event){
     }
     childElem.appendChild(deleteBtn);
     parentElem.appendChild(childElem);
-    
+    var editBtn = document.createElement('input');
+    editBtn.type ='button';
+    editBtn.value = 'edit';
+    editBtn.onclick = () =>{
+        localStorage.removeItem(obj.email);
+        parentElem.removeChild(childElem)
+    }
+    childElem.appendChild(editBtn);
+    parentElem.appendChild(childElem)
 }
 
 
